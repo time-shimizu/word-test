@@ -1,0 +1,25 @@
+<div class = "row">
+  <div class = "col-md-6 col-md-offset-3">
+    <div class = "panel panel-primary">
+      <div class = "panel-heading">
+        <h1>新規ユーザー登録</h1>
+      </div>
+      <div class = "panel-body">
+        <%= form_for @user do |f|%>
+          <p><%= render "shared/error_messages" %></p>
+
+          <p><%= f.label :name, "ユーザーネーム" %></p>
+          <p><%= f.text_field :name, class: 'form-control'  %></p>
+
+          <p><%= f.label :password, "パスワード（４文字以上）" %></p>
+          <p><%= f.text_field :password, class: 'form-control'  %></p>
+
+          <p><%= f.label :password_confirmation, "パスワード確認" %></p>
+          <p><%= f.text_field :password_confirmation, class: 'form-control'  %></p>
+
+          <p><%= f.submit "ユーザーを登録する", class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

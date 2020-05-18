@@ -5,10 +5,12 @@
         <h1>Main menu</h1>
       </div>
       <div class = "panel-body">
-        <p>新規ユーザ作成</p>
-        <p>単語帳</p>
-        <p>ランキング</p>
-        <p>単語マスタメンテナンス</p>
+        <ul>
+        <li><%= link_to "新規ユーザ作成", new_user_path %></li>
+        <li>単語帳</li>
+        <li><%= link_to "ランキング", users_path %></li>
+        <li>単語マスタメンテナンス</li>
+        </ul>
       </div>
     </div>
   </div>
