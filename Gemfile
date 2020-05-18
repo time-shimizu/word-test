@@ -7,6 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 gem 'bootstrap-sass', '3.3.7'
 gem 'bcrypt'
+gem 'rails-i18n'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
