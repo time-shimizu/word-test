@@ -5,7 +5,7 @@
         <h1>新規ユーザー登録</h1>
       </div>
       <div class = "panel-body">
-        <%= form_with model: @user do |f|%>
+        <%= form_with model: @user, local: true do |f|%>
           <p><%= render "shared/error_messages" %></p>
 
           <p><%= f.label :name, "ユーザーネーム" %></p>
