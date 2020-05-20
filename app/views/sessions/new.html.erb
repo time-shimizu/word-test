@@ -5,7 +5,7 @@
         <h1>GDJ単語帳LOGIN</h1>
       </div>
       <div class = "panel-body">
-        <%= form_for :session, url: login_path do |f|%>
+        <%= form_with url: login_path do |f|%>
 
           <p><%= f.label :name, "ユーザーネーム" %></p>
           <p><%= f.text_field :name, class: 'form-control'  %></p>
