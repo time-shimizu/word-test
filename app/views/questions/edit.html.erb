@@ -1,0 +1,24 @@
+<div class = "row">
+  <div class = "col-md-6 col-md-offset-3">
+    <div class = "panel panel-primary">
+      <div class = "panel-heading">
+        <h1>英単語編集</h1>
+      </div>
+      <div class = "panel-body">
+        <%= form_with model: @question, local: true do |f|%>
+          <p><%= render "shared/error_messages", object: f.object %></p>
+
+          <p><%= f.label :question, "英単語" %></p>
+          <p><%= f.text_field :question, class: 'form-control'  %></p>
+
+          <p><%= f.label :description, "英単語の答え、説明" %></p>
+          <p><%= f.text_field :description, class: 'form-control'  %></p>
+
+          <p><%= f.submit "編集を確定する", class: "btn btn-primary" %></p>
+        <% end %>
+        <hr>
+        <p><%= link_to "マスタメンテナンスに戻る", questions_path %></p>
+      </div>
+    </div>
+  </div>
+</div>

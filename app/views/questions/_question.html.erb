@@ -1,3 +1,6 @@
 <p><%= question.question %></p>
 <p><%= question.description %></p>
+<h5>
+  <%= link_to "編集 |", edit_question_path(question) %>
+  <%= link_to "削除", question, method: :delete, data: {confirm:"本当に削除しますか？"} %>
 <hr>

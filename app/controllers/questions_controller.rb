@@ -20,12 +20,23 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
   end
 
   def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(question_params)
+      flash[:success] = "単語編集が完了しました。"
+      redirect_to questions_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    Question.find(params[:id]).destroy
+    flash[:success] = "単語を削除しました"
+    redirect_to questions_path
   end
 
   private
