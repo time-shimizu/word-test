@@ -12,10 +12,10 @@
           <p><%= f.text_field :name, class: 'form-control'  %></p>
 
           <p><%= f.label :password, "パスワード（４文字以上）" %></p>
-          <p><%= f.text_field :password, class: 'form-control'  %></p>
+          <p><%= f.password_field :password, class: 'form-control'  %></p>
 
           <p><%= f.label :password_confirmation, "パスワード確認" %></p>
-          <p><%= f.text_field :password_confirmation, class: 'form-control'  %></p>
+          <p><%= f.password_field :password_confirmation, class: 'form-control'  %></p>
 
           <p><%= f.submit "ユーザーを登録する", class: "btn btn-primary" %></p>
         <% end %>
