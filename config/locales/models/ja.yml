@@ -2,8 +2,12 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      question: 問題
     attributes:
       user:
         name: ユーザー名
         password: パスワード
         password_confirmation: 確認用パスワード
+      question:
+        question: 英単語
+        description: 英単語の答え、説明

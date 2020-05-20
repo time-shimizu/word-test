@@ -1,2 +1,22 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<div class = "row">
+  <div class = "col-md-6 col-md-offset-3">
+    <div class = "panel panel-primary">
+      <div class = "panel-heading">
+        <h1>新規英単語登録</h1>
+      </div>
+      <div class = "panel-body">
+        <%= form_with model: @question, local: true do |f|%>
+          <p><%= render "shared/error_messages", object: f.object %></p>
+
+          <p><%= f.label :question, "英単語" %></p>
+          <p><%= f.text_field :question, class: 'form-control'  %></p>
+
+          <p><%= f.label :description, "英単語の答え、説明" %></p>
+          <p><%= f.text_field :description, class: 'form-control'  %></p>
+
+          <p><%= f.submit "単語を登録する", class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@
       </div>
       <div class = "panel-body">
         <%= form_with model: @user, local: true do |f|%>
-          <p><%= render "shared/error_messages" %></p>
+          <p><%= render "shared/error_messages", object: f.object %></p>
 
           <p><%= f.label :name, "ユーザーネーム" %></p>
           <p><%= f.text_field :name, class: 'form-control'  %></p>
