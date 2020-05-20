@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :logged_in_user
 
   def index
+    @questions = Question.search(params[:search])
   end
 
   def new

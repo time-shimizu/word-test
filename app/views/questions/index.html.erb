@@ -9,6 +9,20 @@
         <li><%= link_to "単語新規作成", new_question_path %></li>
         <li><%= link_to "メインメニューに戻る", root_path %></li>
         </ul>
+        <div class = "row search-form">
+          <%= form_with url: questions_path, method: 'get', local:true do |f| %>
+            <div class = "col-xs-9">
+              <%= f.text_field :search,  class: "form-control" %>
+            </div>
+            <div class = "col-xs-3">
+              <%= f.submit "検索", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+        <hr>
+        <% if @questions %>
+          <%= render @questions %>
+        <% end %>
       </div>
     </div>
   </div>
