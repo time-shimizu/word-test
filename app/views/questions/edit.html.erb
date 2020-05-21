@@ -17,6 +17,17 @@
           <p><%= f.submit "編集を確定する", class: "btn btn-primary" %></p>
         <% end %>
         <hr>
+        <%= form_with model: @question_similar_word, local: true do |f|%>
+          <p><%= render "shared/error_messages", object: f.object %></p>
+
+          <p><%= f.label :similar_word, "類似単語" %></p>
+          <p><%= f.text_field :similar_word, class: 'form-control'  %></p>
+
+          <%= f.hidden_field :question_id, value: @question.id %>
+
+          <p><%= f.submit "類似単語を登録する", class: "btn btn-primary" %></p>
+        <% end %>
+        <hr>
         <p><%= link_to "マスタメンテナンスに戻る", questions_path %></p>
       </div>
     </div>

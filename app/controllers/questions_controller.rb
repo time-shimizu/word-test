@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
 
   def edit
     find_question
+    @question_similar_word = @question.question_similar_words.new
   end
 
   def update
@@ -41,10 +42,6 @@ class QuestionsController < ApplicationController
   end
 
   private
-
-    def logged_in_user
-      redirect_to login_path unless logged_in?
-    end
 
     def question_params
       params.require(:question).permit(:question, :description)
