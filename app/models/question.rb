@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   validates :question, presence: true
   validates :description, presence: true
+  has_many :question_similar_words, dependent: :destroy
 
   class << self
     def search(search)

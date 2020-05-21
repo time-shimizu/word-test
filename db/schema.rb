@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_015801) do
+ActiveRecord::Schema.define(version: 2020_05_21_050422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "question_similar_words", force: :cascade do |t|
+    t.string "similar_word"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_similar_words_on_question_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "question"
@@ -30,4 +38,5 @@ ActiveRecord::Schema.define(version: 2020_05_20_015801) do
     t.string "password_digest"
   end
 
+  add_foreign_key "question_similar_words", "questions"
 end
