@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user
+  before_action :find_question, only: [:edit, :update, :destroy]
 
   def index
     @questions = Question.search(params[:search])
@@ -20,11 +21,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
+    find_question
   end
 
   def update
-    @question = Question.find(params[:id])
+    find_question
     if @question.update_attributes(question_params)
       flash[:success] = "単語編集が完了しました。"
       redirect_to questions_path
@@ -34,7 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
+    find_question.destroy
     flash[:success] = "単語を削除しました"
     redirect_to questions_path
   end
@@ -47,5 +48,9 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:question, :description)
+    end
+
+    def find_question
+      @question = Question.find(params[:id])
     end
 end
