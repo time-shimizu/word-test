@@ -7,7 +7,16 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    if params[:question_id]
+      last_question = Question.find(params[:question_id])
+      if params[:description] == last_question.description
+        flash.now[:success] = "正解です。"
+      else
+        flash.now[:danger] = "不正解です。 正解：#{last_question.description}"
+      end
+    end
+    rand_number = Question.all.map(&:id).sample
+    @question = Question.find(rand_number)
     @questions = (Question.all.sample(2) << @question).shuffle
   end
 

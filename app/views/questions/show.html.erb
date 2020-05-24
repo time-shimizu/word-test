@@ -8,13 +8,18 @@
         <p>第一問</p>
         <hr>
         <h1><%= @question.question %></h1>
-        <%= form_with url: question_path, loal: true do |f|%>
+        <%= form_with url: question_path, method: "get", local: true do |f|%>
 
-          <p><%= f.collection_check_boxes :answer, @questions, :id, :description do |b| %></p>
-          <p><%= b.label {b.check_box + b.text} %></p>
-          <% end %>
+        <p class="radio-button">
+        <% @questions.each do |question| %>
+          <%= f.label :description, question.description %>
+          <%= f.radio_button :description, question.description%>
+        <% end %>
+        </p>
 
-          <p><%= f.submit "回答", class: "btn btn-primary" %></p>
+        <%= f.hidden_field :question_id, value: @question.id %>
+
+        <p><%= f.submit "解答", class: "btn btn-primary" %></p>
         <% end %>
       </div>
     </div>
