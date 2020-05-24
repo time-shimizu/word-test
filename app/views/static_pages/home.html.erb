@@ -14,12 +14,5 @@
         </ul>
       </div>
     </div>
-    <p>ログイン状況：　
-      <% if logged_in? %>
-        <%= current_user.name %>でログイン中
-      <% else %>
-        ログインしてません。<%= link_to "｜ログインする", login_path %>
-      <% end %>
-    </p>
   </div>
 </div>
