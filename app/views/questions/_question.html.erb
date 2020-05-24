@@ -13,7 +13,7 @@
     <% question.question_similar_words.each do |word| %>
       <ul>
         <li class= "similar-word">
-          <%= word.similar_word %>(<%= link_to "削除", word, method: :delete, data: {confirm:"本当に削除しますか？"} %>)
+          <%= word.similar_word %>
         </li>
       </ul>
     <% end %>
