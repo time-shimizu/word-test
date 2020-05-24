@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
       end
       rand_number = Question.all.map(&:id).sample
       @question = Question.find(rand_number)
-      @questions = (Question.all.sample(2) << @question).shuffle
+      @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
     else
       redirect_to users_path
     end
