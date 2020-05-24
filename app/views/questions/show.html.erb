@@ -5,7 +5,7 @@
         <h1>単語帳</h1>
       </div>
       <div class = "panel-body">
-        <p>第一問</p>
+        <p>第<%= session[:correct] + session[:incorrect] + 1 %>問</p>
         <hr>
         <h1><%= @question.question %></h1>
         <%= form_with url: question_path, method: "get", local: true do |f|%>

@@ -15,7 +15,11 @@
         <div class = "alert alert-<%= message_type %>"><%= msg %></div>
       <% end %>
       <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+      <% if Rails.env.development? %>
+        <%= debug(params) %>
+        <p><%= "session[:correct]: #{session[:correct]}" %></p>
+        <p><%= "session[:incorrect]: #{session[:incorrect]}" %></p>
+      <% end %>
     </div>
   </body>
 </html>

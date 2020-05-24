@@ -7,17 +7,26 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if params[:question_id]
-      last_question = Question.find(params[:question_id])
-      if params[:description] == last_question.description
-        flash.now[:success] = "正解です。"
+    if session[:correct] + session[:incorrect] <= 10
+      if params[:question_id]
+        last_question = Question.find(params[:question_id])
+        if params[:description] == last_question.description
+          flash.now[:success] = "正解です。"
+          session[:correct] += 1
+        else
+          flash.now[:danger] = "不正解です。 正解：#{last_question.description}"
+          session[:incorrect] += 1
+        end
       else
-        flash.now[:danger] = "不正解です。 正解：#{last_question.description}"
+        session[:correct] = 0
+        session[:incorrect] = 0
       end
+      rand_number = Question.all.map(&:id).sample
+      @question = Question.find(rand_number)
+      @questions = (Question.all.sample(2) << @question).shuffle
+    else
+      redirect_to users_path
     end
-    rand_number = Question.all.map(&:id).sample
-    @question = Question.find(rand_number)
-    @questions = (Question.all.sample(2) << @question).shuffle
   end
 
   def new
