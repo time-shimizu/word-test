@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if session[:correct] + session[:incorrect] <= 10
+    if session[:correct] + session[:incorrect] < 9 || params[:question_id].nil?
       if params[:question_id]
         last_question = Question.find(params[:question_id])
         if params[:description] == last_question.description
@@ -25,6 +25,12 @@ class QuestionsController < ApplicationController
       @question = Question.find(rand_number)
       @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
     else
+      last_question = Question.find(params[:question_id])
+      if params[:description] == last_question.description
+        session[:correct] += 1
+      else
+        session[:incorrect] += 1
+      end
       redirect_to users_path
     end
   end
