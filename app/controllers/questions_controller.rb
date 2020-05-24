@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @question_similar_word = @question.question_similar_words.new
+    @question_similar_word = @question.question_similar_words.build
   end
 
   def create
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:question, :description,
-        question_similar_words_attributes:[ :id, :similar_word, :_destroy])
+        question_similar_words_attributes:[:id, :similar_word, :_destroy])
     end
 
     def find_question
