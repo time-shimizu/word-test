@@ -12,8 +12,10 @@
 
         <p class="radio-button">
         <% @questions.each do |question| %>
-          <%= f.label :description, question.description %>
+          <p>
           <%= f.radio_button :description, question.description%>
+          <%= f.label :description, question.description %>
+          </p>
         <% end %>
         </p>
 
