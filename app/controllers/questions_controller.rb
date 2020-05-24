@@ -6,6 +6,11 @@ class QuestionsController < ApplicationController
     @questions = Question.search(params[:search])
   end
 
+  def show
+    @question = Question.find(params[:id])
+    @questions = (Question.all.sample(2) << @question).shuffle
+  end
+
   def new
     @question = Question.new
   end

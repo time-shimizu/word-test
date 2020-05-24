@@ -1,0 +1,22 @@
+<div class = "row">
+  <div class = "col-md-6 col-md-offset-3">
+    <div class = "panel panel-primary">
+      <div class = "panel-heading">
+        <h1>単語帳</h1>
+      </div>
+      <div class = "panel-body">
+        <p>第一問</p>
+        <hr>
+        <h1><%= @question.question %></h1>
+        <%= form_with url: question_path, loal: true do |f|%>
+
+          <p><%= f.collection_check_boxes :answer, @questions, :id, :description do |b| %></p>
+          <p><%= b.label {b.check_box + b.text} %></p>
+          <% end %>
+
+          <p><%= f.submit "回答", class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
