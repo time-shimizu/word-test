@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    if session[:correct] != 0 && session[:incorrect] != 0
+    unless session[:correct] == 0 && session[:incorrect] == 0
       correct_answer_late = session[:correct]*100 / (session[:correct] + session[:incorrect])
       flash.now[:success] = "正解数：#{session[:correct]}　不正解数：#{session[:incorrect]}　正答率：　#{correct_answer_late}%"
       session[:correct] = 0
