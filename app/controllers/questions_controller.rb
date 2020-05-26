@@ -22,12 +22,10 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    find_question
     @question_similar_word = @question.question_similar_words.new
   end
 
   def update
-    find_question
     if @question.update_attributes(question_params)
       flash[:success] = "単語編集が完了しました。"
       redirect_to questions_path
@@ -37,7 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    find_question.destroy
+    @question.destroy
     flash[:success] = "単語を削除しました"
     redirect_to questions_path
   end
