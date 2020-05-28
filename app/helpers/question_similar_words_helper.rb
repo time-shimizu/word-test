@@ -1,0 +1,2 @@
+module QuestionSimilarWordsHelper
+end

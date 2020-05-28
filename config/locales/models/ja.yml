@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       question: 問題
+      question_similar_word: 類似単語
     attributes:
       user:
         name: ユーザー名
@@ -11,3 +12,5 @@ ja:
       question:
         question: 英単語
         description: 英単語の答え、説明
+      question_similar_word:
+        similar_word: 類似単語

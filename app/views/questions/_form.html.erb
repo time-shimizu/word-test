@@ -1,0 +1,23 @@
+<%= form_with model: @question, local: true do |f|%>
+  <p><%= render "shared/error_messages", object: f.object %></p>
+
+  <p><%= f.label :question, "英単語" %></p>
+  <p><%= f.text_field :question, class: 'form-control'  %></p>
+
+  <p><%= f.label :description, "英単語の答え、説明" %></p>
+  <p><%= f.text_field :description, class: 'form-control'  %></p>
+
+  <hr>
+  <div class = "similar_words">
+    <p> 類似単語　</p>
+    <%= f.fields_for :question_similar_words do |q| %>
+      <%= render 'question_similar_word_fields', f: q %>
+    <% end %>
+    <div class ="links">
+      <p><%= link_to_add_association '類似単語を追加', f, :question_similar_words, class: "btn btn-info" %></p>
+    </div>
+  </div>
+  <hr>
+
+  <p><%= f.submit "単語を登録", class: "btn btn-primary" %></p>
+<% end %>

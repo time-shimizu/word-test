@@ -1,6 +1,25 @@
-<p><%= question.question %></p>
-<p><%= question.description %></p>
-<h5>
-  <%= link_to "編集 |", edit_question_path(question) %>
-  <%= link_to "削除", question, method: :delete, data: {confirm:"本当に削除しますか？"} %>
+<div class = "row">
+  <div class = "col-xs-6">
+    <p><%= question.question %></p>
+    <p><%= question.description %></p>
+    <h5>
+      <%= link_to "編集 |", edit_question_path(question) %>
+      <%= link_to "削除", question, method: :delete, data: {confirm:"本当に削除しますか？"} %>
+    </h5>
+  </div>
+  <div class = "col-xs-6">
+    <p>類似単語</p>
+    <% if question.question_similar_words.any? %>
+    <% question.question_similar_words.each do |word| %>
+      <ul>
+        <li class= "similar-word">
+          <%= word.similar_word %>
+        </li>
+      </ul>
+    <% end %>
+    <% else %>
+     <p> <%= link_to "未登録です", edit_question_path(question) %></p>
+    <% end %>
+  </div>
+</div>
 <hr>
