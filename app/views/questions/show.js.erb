@@ -1,0 +1,3 @@
+$(#question_number).html('<%= session[:correct] + session[:incorrect] %>');
+$(#question_question).html('<%= @question.question %>');
+$(#question_answer).html('<%= @questions.each{|question| question.description }%>')

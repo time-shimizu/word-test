@@ -24,6 +24,10 @@ class QuestionsController < ApplicationController
       rand_number = Question.all.map(&:id).sample
       @question = Question.find(rand_number)
       @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       last_question = Question.find(params[:question_id])
       if params[:description] == last_question.description

@@ -5,19 +5,19 @@
         <h1>単語帳</h1>
       </div>
       <div class = "panel-body">
-        <p>第<%= session[:correct] + session[:incorrect] + 1 %>問</p>
+        <p id="question_number">第<%= session[:correct] + session[:incorrect] + 1 %>問</p>
         <hr>
-        <h1><%= @question.question %></h1>
-        <%= form_with url: question_path, method: "get", local: true do |f|%>
+        <h1 id="question_question"><%= @question.question %></h1>
+        <%= form_with url: question_path, method: "get" do |f|%>
 
-        <p class="radio-button">
-        <% @questions.each do |question| %>
-          <p>
-          <%= f.radio_button :description, question.description%>
-          <%= f.label :description, question.description %>
-          </p>
-        <% end %>
-        </p>
+          <div class="radio-button">
+          <% @questions.each do |question| %>
+            <p id="question_answer">
+            <%= f.radio_button :description, question.description%>
+            <%= f.label :description, question.description %>
+            </p>
+          <% end %>
+          </div>
 
         <%= f.hidden_field :question_id, value: @question.id %>
 
