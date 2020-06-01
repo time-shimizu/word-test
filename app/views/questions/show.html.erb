@@ -10,18 +10,17 @@
         <h1 id="question_question"><%= @question.question %></h1>
         <%= form_with url: question_path, method: "get" do |f|%>
 
+          <%= f.hidden_field :question_id, value: @question.id %>
           <div class="radio-button">
-          <% @questions.each do |question| %>
-            <p id="question_answer">
-            <%= f.radio_button :description, question.description%>
-            <%= f.label :description, question.description %>
-            </p>
-          <% end %>
+            <% @questions.each_with_index do |question, i| %>
+              <p id="question_answer<%= i %>">
+              <%= radio_button_tag :description, question.description%>
+              <%= label_tag :description, question.description %>
+              </p>
+            <% end %>
           </div>
 
-        <%= f.hidden_field :question_id, value: @question.id %>
-
-        <p><%= f.submit "解答", class: "btn btn-primary" %></p>
+          <p><%= f.submit "解答", class: "btn btn-primary" %></p>
         <% end %>
       </div>
     </div>

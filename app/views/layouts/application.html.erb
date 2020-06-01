@@ -17,8 +17,8 @@
       <%= yield %>
       <% if Rails.env.development? %>
         <%= debug(params) %>
-        <p><%= "session[:correct]: #{session[:correct]}" %></p>
-        <p><%= "session[:incorrect]: #{session[:incorrect]}" %></p>
+        <p id = "session-correct"><%= "session[:correct]: #{session[:correct]}" %></p>
+        <p id = "session-incorrect"><%= "session[:incorrect]: #{session[:incorrect]}" %></p>
       <% end %>
     </div>
   </body>

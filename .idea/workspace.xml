@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0ff35a3b-03ac-4894-83a3-f075d40c6a92" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/questions/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/questions/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/questions/show.js.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/questions/show.js.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -41,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591002954263</updated>
-      <workItem from="1591002955850" duration="5628000" />
+      <workItem from="1591002955850" duration="13878000" />
     </task>
     <servers />
   </component>
@@ -49,6 +54,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1056" y="-901" key="SettingsEditor" timestamp="1591011296990">
+      <screen x="587" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="1056" y="-901" key="SettingsEditor/0.0.1280.800/587.-1080.1920.1080/-1333.-1080.1920.1080@587.-1080.1920.1080" timestamp="1591011296990" />
     <state x="1212" y="-839" width="670" height="676" key="search.everywhere.popup" timestamp="1591003071590">
       <screen x="587" y="-1080" width="1920" height="1080" />
     </state>

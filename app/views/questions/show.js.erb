@@ -1,3 +1,15 @@
-$(#question_number).html('<%= session[:correct] + session[:incorrect] %>');
-$(#question_question).html('<%= @question.question %>');
-$(#question_answer).html('<%= @questions.each{|question| question.description }%>')
+$("#question_number").html('第<%= session[:correct] + session[:incorrect] + 1 %>問');
+$("#question_question").html('<%= @question.question %>');
+$("#question_answer0").html('<%= radio_button_tag :description, answer=@questions.shift.description%>\n' +
+    '            <%= label_tag :description, answer %>')
+$("#question_answer1").html('<%= radio_button_tag :description, answer=@questions.shift.description%>\n' +
+    '            <%= label_tag :description, answer %>')
+$("#question_answer2").html('<%= radio_button_tag :description, answer=@questions.shift.description%>\n' +
+    '            <%= label_tag :description, answer %>')
+$("#session-correct").html("session[:correct]: <%= session[:correct] %>")
+$("#session-incorrect").html("session[:incorrect]: <%= session[:incorrect] %>")
+<%  p @question.id %>
+//$("#question_id").html('<input value="<%#= @question.id %>" type="hidden" name="question_id"/>')
+// $("#question_id").html('<%#= hidden_field_tag :question_id, @question.id %>')
+$("#question_id")[0].value = '<%= @question.id %>';
+document.getElementById("question_id")
