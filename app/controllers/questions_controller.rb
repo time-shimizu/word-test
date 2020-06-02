@@ -10,7 +10,8 @@ class QuestionsController < ApplicationController
     if session[:correct].to_i + session[:incorrect].to_i < 9 || params[:question_id].nil?
       if params[:question_id]
         last_question = Question.find(params[:question_id])
-        if params[:description] == last_question.description
+        user_answer = Question.find(params[:question])
+        if user_answer.description == last_question.description
           # flash.now[:success] = "正解です。"
           session[:correct] += 1
         else
@@ -38,7 +39,8 @@ class QuestionsController < ApplicationController
       end
     else
       last_question = Question.find(params[:question_id])
-      if params[:description] == last_question.description
+      user_answer = Question.find(params[:question])
+      if user_answer.description == last_question.description
         session[:correct] += 1
       else
         session[:incorrect] += 1

@@ -1,11 +1,11 @@
 $("#question_number").html('第<%= session[:correct] + session[:incorrect] + 1 %>問');
 $("#question_question").html('<%= @question.question %>');
-$("#question_answer0").html('<%= radio_button_tag :description, answer=@questions.shift.description, checked: "checked"%>\n' +
-    '            <%= label_tag :description, answer %>')
-$("#question_answer1").html('<%= radio_button_tag :description, answer=@questions.shift.description%>\n' +
-    '            <%= label_tag :description, answer %>')
-$("#question_answer2").html('<%= radio_button_tag :description, answer=@questions.shift.description%>\n' +
-    '            <%= label_tag :description, answer %>')
+$("#question_answer0").html('<%= radio_button_tag :question, answer_id=@questions.shift.id, checked: "checked"%>\n' +
+    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
+$("#question_answer1").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
+    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
+$("#question_answer2").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
+    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
 $("#session-correct").html("session[:correct]: <%= session[:correct] %>")
 $("#session-incorrect").html("session[:incorrect]: <%= session[:incorrect] %>")
 <%  p @question.id %>

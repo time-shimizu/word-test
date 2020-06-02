@@ -16,11 +16,11 @@
             <% @questions.each_with_index do |question, i| %>
               <p id="question_answer<%= i %>">
                 <% if i == 0 %>
-                  <%= radio_button_tag :description, question.description, checked: "checked"%>
-                  <%= label_tag :description, question.description %>
+                  <%= radio_button_tag :question, question.id, checked: "checked"%>
+                  <%= label_tag "question_#{question.id}", question.description %>
                 <% else %>
-                  <%= radio_button_tag :description, question.description%>
-                  <%= label_tag :description, question.description %>
+                  <%= radio_button_tag :question, question.id %>
+                  <%= label_tag "question_#{question.id}", question.description %>
                 <% end %>
               </p>
             <% end %>
