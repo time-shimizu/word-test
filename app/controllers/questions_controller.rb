@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
       else
         session[:incorrect] += 1
       end
-      redirect_to users_path
+      render :js => "window.location = '#{users_path}'"
     end
   end
 

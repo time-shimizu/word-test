@@ -8,6 +8,7 @@
         <p id="question_number">第<%= session[:correct] + session[:incorrect] + 1 %>問</p>
         <hr>
         <h1 id="question_question"><%= @question.question %></h1>
+
         <%= form_with url: question_path, method: "get" do |f|%>
 
           <%= f.hidden_field :question_id, value: @question.id %>
