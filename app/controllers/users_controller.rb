@@ -17,8 +17,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     unless session[:correct].nil? || session[:incorrect].nil? || (session[:correct] == 0 && session[:incorrect] == 0)
-      correct_answer_late = session[:correct]*100 / (session[:correct] + session[:incorrect])
-      flash.now[:success] = "正解数：#{session[:correct]}　不正解数：#{session[:incorrect]}　正答率：　#{correct_answer_late}%"
+      correct_answer_late = session[:correct]*100 / (session[:correct].to_i + session[:incorrect].to_i)
+      scores = @users.map(&:highest_score)
+      scores << correct_answer_late
+      scores.sort!.reverse!
+      flash.now[:success] = "お疲れ様でした！あなたの成績は、#{session[:correct].to_i + session[:incorrect].to_i}問中、#{session[:correct].to_i}問正解。正解率#{correct_answer_late}%で#{scores.index(correct_answer_late).to_i +1 }位でした"
       session[:correct] = 0
       session[:incorrect] = 0
       if current_user.highest_score <= correct_answer_late
