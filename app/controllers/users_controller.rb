@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       scores = @users.map(&:highest_score)
       scores << correct_answer_late
       scores.sort!.reverse!
-      flash.now[:success] = "お疲れ様でした！あなたの成績は、#{session[:correct].to_i + session[:incorrect].to_i}問中、#{session[:correct].to_i}問正解。正解率#{correct_answer_late}%で#{scores.index(correct_answer_late).to_i +1 }位でした"
+      flash.now[:success] = "お疲れ様でした！あなたの成績は、#{session[:correct].to_i + session[:incorrect].to_i}問中、#{session[:correct].to_i}問正解。正解率#{correct_answer_late}%で#{scores.index(correct_answer_late) + 1}位でした"
       session[:correct] = 0
       session[:incorrect] = 0
       if current_user.highest_score <= correct_answer_late
