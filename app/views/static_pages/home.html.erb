@@ -8,7 +8,11 @@
         <p>下記のメニューよりクリックしてください</p>
         <ul>
         <li><%= link_to "新規ユーザ作成", new_user_path %></li>
-        <li><%= link_to "単語帳", question_path(@question) %></li>
+        <% unless Question.count == 0 %>
+          <li><%= link_to "単語帳", question_path(@question) %></li>
+        <% else %>
+          <li>単語帳</li>
+        <% end %>
         <li><%= link_to "ランキング", users_path %></li>
         <li><%= link_to "単語マスタメンテナンス", questions_path %></li>
         </ul>
