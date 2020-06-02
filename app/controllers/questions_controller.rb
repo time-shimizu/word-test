@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if session[:correct] + session[:incorrect] < 9 || params[:question_id].nil?
+    if session[:correct].to_i + session[:incorrect].to_i < 9 || params[:question_id].nil?
       if params[:question_id]
         last_question = Question.find(params[:question_id])
         if params[:description] == last_question.description
