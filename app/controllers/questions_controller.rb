@@ -11,10 +11,10 @@ class QuestionsController < ApplicationController
       if params[:question_id]
         last_question = Question.find(params[:question_id])
         if params[:description] == last_question.description
-          flash.now[:success] = "正解です。"
+          # flash.now[:success] = "正解です。"
           session[:correct] += 1
         else
-          flash.now[:danger] = "不正解です。 正解：#{last_question.description}"
+          # flash.now[:danger] = "不正解です。 正解：#{last_question.description}"
           session[:incorrect] += 1
         end
       else

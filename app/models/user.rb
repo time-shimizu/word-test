@@ -3,4 +3,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 4}, allow_nil: true
   has_secure_password
   default_scope -> {order(highest_score: :desc)}
+
+  # def current_user?
+  #   self.id == session[:user_id]
+  # end
 end

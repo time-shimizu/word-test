@@ -6,8 +6,10 @@
       </div>
       <div class = "panel-body">
         <% @users.each_with_index do |user,i| %>
-          <h2>第<%= i + 1 %>位　<%= user.name %></h2>
-          <h3>正答率：　<%= user.highest_score %></h3>
+          <div id = <%= "current_user" if user.id == session[:user_id] %>>
+            <h2>第<%= i + 1 %>位　<%= user.name %></h2>
+            <h3>正答率：　<%= user.highest_score %></h3>
+          </div>
           <hr>
         <% end %>
         <p><%= link_to "メインメニューに戻る", root_path %><p>
