@@ -21,8 +21,16 @@ class QuestionsController < ApplicationController
         session[:correct] = 0
         session[:incorrect] = 0
       end
-      rand_number = Question.all.map(&:id).sample
-      @question = Question.find(rand_number)
+      # rand_number = Question.all.map(&:id).sample
+      # @question = Question.find(rand_number)
+      if session[:correct] == 0 && session[:incorrect] == 0
+        $wordtests = Question.all.sample(10)
+        if $wordtests.size <10
+          flash[:danger] = "現在の単語数は#{Question.all.count}個です。問題を10問以上作成してください"
+          redirect_to new_question_path
+        end
+      end
+      @question = $wordtests.shift
       @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
       respond_to do |format|
         format.html
