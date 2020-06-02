@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    unless session[:correct].nil? || session[:incorrect].nil? || (session[:correct] == 0 && session[:incorrect] == 0)
+    unless session[:correct].nil? || session[:incorrect].nil? || (session[:correct] == 0 && session[:incorrect] == 0) || session[:correct] + session[:incorrect] < 10
       correct_answer_late = session[:correct]*100 / (session[:correct].to_i + session[:incorrect].to_i)
       scores = @users.map(&:highest_score)
       scores << correct_answer_late
