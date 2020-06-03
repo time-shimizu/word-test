@@ -32,7 +32,11 @@ class QuestionsController < ApplicationController
         end
       end
       @question = $wordtests.shift
-      @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
+      if @question
+        @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
+      else
+        render :js => "window.location = '#{root_path}'"
+      end
       respond_to do |format|
         format.html
         format.js
