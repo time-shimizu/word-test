@@ -9,6 +9,20 @@
         <hr>
         <h1 id="question_question"><%= @question.question %></h1>
 
+        <div class = "similar-words">
+        <% if @similar_words.present? %>
+          <p>類似単語</p>
+          <% @similar_words.each_with_index do |word, n| %>
+            <p id = "similar_word<%= n %>"><%= word.similar_word %></p>
+          <% end %>
+        <% else %>
+          <% $most_similar_number.times do |m| %>
+            <p id = "similar_word<%= m %>"></p>
+          <% end %>
+        <% end %>
+        </div>
+        <hr>
+
         <%= form_with url: question_path, method: "get" do |f|%>
 
           <%= f.hidden_field :question_id, value: @question.id %>

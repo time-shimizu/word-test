@@ -30,9 +30,15 @@ class QuestionsController < ApplicationController
           flash[:danger] = "現在の単語数は#{Question.all.count}個です。問題を10問以上作成してください"
           redirect_to new_question_path
         end
+        if QuestionSimilarWord
+          nums = QuestionSimilarWord.all.map(&:question_id)
+          most_having_similar_id = nums.max_by {|x| nums.count(x)}
+          $most_similar_number = Question.find(most_having_similar_id).question_similar_words.count
+        end
       end
       @question = $wordtests.shift
       if @question
+        @similar_words = @question.question_similar_words
         @questions = (Question.where.not(id: @question.id).sample(2) << @question).shuffle
       else
         render :js => "window.location = '#{root_path}'"

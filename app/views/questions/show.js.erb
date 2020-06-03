@@ -1,15 +1,39 @@
 $("#question_number").html('第<%= session[:correct] + session[:incorrect] + 1 %>問');
 $("#question_question").html('<%= @question.question %>');
-$("#question_answer0").html('<%= radio_button_tag :question, answer_id=@questions.shift.id, checked: "checked"%>\n' +
-    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
-$("#question_answer1").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
-    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
-$("#question_answer2").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
-    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>')
-$("#session-correct").html("session[:correct]: <%= session[:correct] %>")
-$("#session-incorrect").html("session[:incorrect]: <%= session[:incorrect] %>")
+//$("#question_answer0").html('<%= radio_button_tag :question, answer_id=@questions.shift.id, checked: "checked"%>\n' +
+//    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>');
+//$("#question_answer1").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
+//    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>');
+//$("#question_answer2").html('<%= radio_button_tag :question, answer_id=@questions.shift.id%>\n' +
+//    '            <%= label_tag "question_#{answer_id}", Question.find(answer_id).description %>');
+<% @questions.shuffle.each_with_index do |question, i| %>
+ var target_dom = $("#question_answer<%= i %>");
+ var radio_btn  = target_dom.children("input")[0];
+ radio_btn.id   = "question_<%= question.id %>";
+ radio_btn.value = "<%= question.id  %>";
+ <% if i.zero? %>
+    radio_btn.checked = true
+ <% else %>
+    radio_btn.checked = false
+ <%end %>
+
+  var label = target_dom.children("label")[0];
+  label.attributes[0].nodeValue = "question_<%= question.id %>";
+  label.innerHTML  = "<%= question.description %>";
+<% end %>
+$("#session-correct").html("session[:correct]: <%= session[:correct] %>");
+$("#session-incorrect").html("session[:incorrect]: <%= session[:incorrect] %>");
 <%  p @question.id %>
 //$("#question_id").html('<input value="<%#= @question.id %>" type="hidden" name="question_id"/>')
 // $("#question_id").html('<%#= hidden_field_tag :question_id, @question.id %>')
 $("#question_id")[0].value = '<%= @question.id %>';
-document.getElementById("question_id")
+document.getElementById("question_id");
+<% if @similar_words.present? %>
+  <% @similar_words.each_with_index do |word, n| %>
+  $("#similar_word<%= n %>").html('<%= word.similar_word %>');
+  <% end %>
+<% else %>
+  $(".similar-words").html('<% $most_similar_number.times do |m| %>\n' +
+      '            <p id = "similar_word<%= m %>"></p>\n' +
+      '          <% end %>');
+<% end %>
